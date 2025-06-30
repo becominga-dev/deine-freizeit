@@ -1,0 +1,39 @@
+body {
+  font-family: sans-serif;
+  margin: 0;
+  padding: 0;
+  background: #EAF9E7;
+  color: #013237;
+}
+
+header {
+  background-color: #FFB868;
+  padding: 1rem;
+  text-align: center;
+}
+
+.intro, .today {
+  padding: 1.5rem;
+  text-align: center;
+}
+
+button {
+  margin: 0.5rem;
+  padding: 0.8rem 1.2rem;
+  background: #FFB868;
+  border: none;
+  border-radius: 8px;
+  font-size: 1rem;
+  cursor: pointer;
+}
+
+button:hover {
+  background: #F89E45;
+}
+
+footer {
+  background-color: #013237;
+  color: white;
+  text-align: center;
+  padding: 1rem;
+}
