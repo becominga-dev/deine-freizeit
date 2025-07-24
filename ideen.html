@@ -138,6 +138,41 @@ was möchtdst du heite tun? </p>-->
 
 
 
+	<script>
+	// DOM-Elemente holen
+	const hamburger = document.getElementById('hamburger');
+	const sideMenu = document.getElementById('sideMenu');
+	const closeBtn = document.getElementById('closeBtn');
+
+	// Menü öffnen
+	hamburger.addEventListener('click', () => {
+
+	sideMenu.style.display = 'flex';
+	  // Timeout sorgt dafür, dass der Übergang sichtbar wird
+	  setTimeout(() => {
+		sideMenu.classList.add('open');
+	  }, 10);
+	});
+	  //sideMenu.classList.add('open'); }); //
+
+	
+
+	// Menü schließen
+closeBtn.addEventListener('click', () => {
+	  sideMenu.classList.remove('open');
+
+	
+	setTimeout(() => {
+sideMenu.style.display = 'none';
+	  }, 300); // Warte bis Übergang abgeschlossen ist
+	
+	});
+	
+	</script>
+
+
+	
+
 <script>
 async function ladeWetter() {
   if (!navigator.geolocation) {
