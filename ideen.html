@@ -1,0 +1,201 @@
+>>> jasascript code für hamburgerbutton  Menü hinzufügen & die nav List ergänzen!!! <br>
+
+>>> Wettermodul Box designen!!!
+
+
+
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Ideen - Deine Freizeit</title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+  <link rel="stylesheet" href="deine-frezeit/ideen.css">
+  
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway&display=swap" rel="stylesheet">
+
+</head>
+
+
+<body>
+
+
+  <!-- Hamburger Icon -->
+  <div class="hamburger" id="hamburger">&#9776;</div>
+
+  <!-- Seitenmenü -->
+  <div id="sideMenu" class="side-menu">
+
+<!-- Pfeil <div class="close-btn" id="closeBtn">&#10145;</div> -->
+
+<!-- Button mit Font Awesome Icon -->
+<div class="close-btn" id="closeBtn"><i class="fa fa-arrow-left"></i></div>
+
+	<nav>
+	  <a href="index.html">🏠 Startseite</a>
+	  <a href="ideen.html">💡 Ideen</a>
+	  <a href="veranstaltungen.html">📅 Veranstaltungen</a>
+	  <a href="#">📋 Platzhalter</a>
+	</nav>
+  </div>
+  
+
+  <!-- für die Ideen Unterseite nutzen
+  <header>
+	<h1>🌞 Freizeitplaner</h1>
+	<p>Hallo! Was möchtest du heute tun?</p>
+  </header>  <h2>Hallo 👋 Schön, dass du da bist!</h2>
+<p>Plane deine nächste schöne Auszeit oder stöbere durch deine Aktivitäten.
+was möchtdst du heite tun? </p>-->
+
+	
+
+
+
+<header>
+
+<img src="https://i.postimg.cc/mZChx0vF/Icon-ideen.png" alt="Sonnen-Icon" style="margin-right: 3px;">
+
+
+	<h1>Freizeitideen</h1>
+	
+</header> 
+	
+	
+	
+<div id="wetterModul" style="background:#e0f7fa; padding:20px; margin-bottom:20px; border-radius:10px; max-width:400px;">
+  <h2>🌤️ Wetter an deinem Standort</h2>
+  <p id="wetterText">Wird geladen…</p>
+  <div id="wetterIcon" style="font-size:48px; margin-top:10px;"></div>
+  <p id="stadtName" style="font-weight:bold; margin-top:10px;"></p>
+</div>
+
+		
+	
+		<div class="filter-row">
+		
+  <p id="Greeting">Filter</p>
+
+  <section class="filter">
+	<select style="color: #013237;">
+	  <option>Alle Kategorien</option>
+	  <option>Outdoor</option>
+	  <option>Indoor</option>
+	  <option>Kostenfrei</option>
+	</select>
+  </section>
+</div>
+		
+
+
+
+
+  <main>
+
+
+	<section class="map">
+	  <h2>Interaktive Karte</h2>
+	  <!-- Scribble Maps oder Leaflet einbetten -->
+
+
+
+<iframe src="https://umap.openstreetmap.de/de/map/freizeitideen-koln_99194?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true" width="100%" height="500px" style="border:0;"></iframe>
+	</section> 
+	
+	
+	<!--
+<iframe width="100%" height="300px" frameborder="0" allowfullscreen allow="geolocation" src="//umap.openstreetmap.de/de/map/freizeitideen-koln_99180?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true"></iframe><p><a href="//umap.openstreetmap.de/de/map/freizeitideen-koln_99180?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true">Vollbildanzeige</a></p>
+-->
+
+
+	<section class="results">
+	  <h2>🎯 Ideen</h2>
+	  <div class="idea-card">
+		<h3>🎨 Kreativ-Workshop</h3>
+		<p>📍 Stadtmitte | Kosten: 10€</p>
+		<button>Mehr erfahren</button>
+	  </div>
+	  <div class="idea-card">
+		<h3>🚴 Fahrradtour</h3>
+		<p>📍 Am See | Kostenlos</p>
+		<button>Mehr erfahren</button>
+	  </div>
+	</section>
+  </main>
+
+  
+  
+  <footer>
+<p>&copy; 2025 Deine Freizeit. All rights reserved.</p>
+</footer>
+
+
+
+<script>
+async function ladeWetter() {
+  if (!navigator.geolocation) {
+	document.getElementById("wetterText").innerText = "Standortzugriff nicht verfügbar.";
+	return;
+  }
+
+  navigator.geolocation.getCurrentPosition(async pos => {
+	const lat = pos.coords.latitude;
+	const lon = pos.coords.longitude;
+
+	// Reverse Geocoding - Stadtnamen holen via OpenStreetMap Nominatim
+	try {
+	  const resGeo = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`);
+	  const dataGeo = await resGeo.json();
+	  const stadt = dataGeo.address.city || dataGeo.address.town || dataGeo.address.village || dataGeo.address.county || "deinem Standort";
+	  document.getElementById("stadtName").innerText = `Ort: ${stadt}`;
+	} catch {
+	  document.getElementById("stadtName").innerText = "Ort: Unbekannt";
+	}
+
+	// Wetterdaten von Open-Meteo abrufen
+	const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
+
+	try {
+	  const res = await fetch(url);
+	  const data = await res.json();
+	  const weather = data.current_weather;
+	  const temp = weather.temperature;
+	  const wind = weather.windspeed;
+	  const code = weather.weathercode;
+
+	  let msg = `Temperatur: ${temp} °C, Wind: ${wind} km/h`;
+	  let icon = "☀️"; // Standard-Icon
+
+	  // Wettercode nach Open-Meteo-Definition (vereinfacht)
+	  // https://open-meteo.com/en/docs#weathercode
+	  if ([0].includes(code)) icon = "☀️";		   // Klarer Himmel
+	  else if ([1, 2, 3].includes(code)) icon = "⛅"; // Teilweise bewölkt
+	  else if ([45, 48].includes(code)) icon = "🌫️";  // Nebel
+	  else if ([51, 53, 55].includes(code)) icon = "🌦️"; // Nieselregen
+	  else if ([61, 63, 65].includes(code)) icon = "🌧️"; // Regen
+	  else if ([71, 73, 75, 85, 86].includes(code)) icon = "🌨️"; // Schnee
+	  else if ([95, 96, 99].includes(code)) icon = "⛈️"; // Gewitter
+	  else icon = "❓";
+
+	  document.getElementById("wetterText").innerText = msg;
+	  document.getElementById("wetterIcon").innerText = icon;
+	} catch (err) {
+	  console.error(err);
+	  document.getElementById("wetterText").innerText = "Wetter konnte nicht geladen werden.";
+	  document.getElementById("wetterIcon").innerText = "";
+	}
+  }, () => {
+	document.getElementById("wetterText").innerText = "Standortfreigabe verweigert.";
+  });
+}
+
+ladeWetter();
+</script>
+
+
+</body>
+</html>
