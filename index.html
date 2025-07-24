@@ -1,37 +1,507 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Deine Freizeit</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Startseite </title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway&display=swap" rel="stylesheet">
+
+  <style>
+  
+  
+	body {
+		margin: 0;
+		font-family: 'Poppins', sans-serif;
+		background-color: #EAF9E7;
+		/*background-color: #fcfbef;*/
+		}
+		
+		
+		
+		  #preloader {
+		position: fixed;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background-color: #013237;
+		z-index: 9999;
+		display: flex;
+		justify-content: center;
+		align-items: center;
+	  }
+
+	  .spinner {
+		border: 6px solid #d0d0d0;
+		border-top: 6px solid #4CA771;
+		border-radius: 50%;
+		width: 50px;
+		height: 50px;
+		animation: spin 0.8s linear infinite;
+	  }
+
+	  @keyframes spin {
+		0% { transform: rotate(0deg); }
+		100% { transform: rotate(360deg); }
+	  }
+		
+		
+		
+		
+	/* Hamburger Icon oben links */
+	.hamburger {
+	  font-size: 2rem;
+	  padding: 1rem;
+	  color: #4CA771;
+	  cursor: pointer;
+	  position: fixed;
+	  top: 10px;
+	  right: 10px;
+	  z-index: 1001;
+	  user-select: none;
+	}
+
+	/* Seitenmenü - initial versteckt (außerhalb des Bildschirms) */
+	.side-menu {
+	  height: 100%;
+	  width: 250px;
+	  background-color: #ffe4b5;
+	  position: fixed;
+	  top: 0;
+	  /* left: -260px; */
+	  left: 0px;
+	  transform: translateX(-100%);
+	  transition: left 0.3s ease;
+	  z-index: 1000;
+	  padding: 1rem;
+	  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+	  /* display: flex; */
+	  display: none;
+	  flex-direction: column;
+	}
+
+	/* Menü geöffnet: schiebe das Menü ins Bild */
+	.side-menu.open {
+	  /* left: 0; */
+	   display: flex;
+	  transform: translateX(0);
+	}
+
+	/* Schließen-Pfeil oben rechts im Menü */
+	.close-btn {
+	  align-self: flex-end;
+	  font-size: 1.5rem;
+	  cursor: pointer;
+	  user-select: none;
+	  margin-bottom: 1rem;
+	}
+
+	/* Navigationslinks im Menü */
+	.side-menu nav a {
+	  display: block;
+	  margin: 0.8rem 0;
+	  text-decoration: none;
+	  color: #333;
+	  font-size: 1.2rem;
+	  user-select: none;
+	}
+
+	/* Optional: Hover-Effekt auf Links */
+	.side-menu nav a:hover {
+	  color: #b35c00;
+	}
+	
+	
+	header h1 {
+  font-family: 'Playfair Display',
+  serif;
+  color: black;
+  font-size: 32px;
+  margin-left: 5px;
+ 
+	} 
+	
+	
+	/* header h1 {
+  font-family: 'Helvetica Neue',
+  serif;
+  font-size: 32px;
+	} */
+	
+	
+	header #Slogan {
+		margin-left: 10px;
+		margin-right: 5px;
+		margin-top: -5px;
+		font-size: 22px;
+		font-family: 'Raleway', sans-serif;
+		color: black;
+	/*background-color: lightpink;*/
+	}
+	
+	#Greeting {
+	position: relative;
+		margin-left: 10px;
+		margin-top: 60px;
+		font-size: 16px;
+	/*background-color: lightgrey;*/
+	color: #013237;
+	}
+	
+	
+	.actions {
+	 /* background-color: #4CA771; */
+	/*background-color: green; */
+	/*margin: 2.5rem 0;*/
+	margin: 1rem 0 3rem;
+	}
+	
+	.btn {
+  display: block;
+  margin: 1rem auto;
+  /* padding: 0.5rem 0.75rem; */
+  padding: 0.75rem;
+  text-align: center;
+  /* background: #ffd580; */
+  /* background:  #FCB018; */
+  /*background: #d0c476; */
+  /* background: #865e44;*/
+/*background: #3a6b6b; */
+	background: #FFB86B; 
+  /*color: #000;*/
+  color: #013237;
+  text-decoration: none;
+  border-radius: 8px;
+  width: 80%;
+  font-weight: bold; 
+}
+
+.Einführung {
+	   text-align: center;
+	   margin-left: 10px;
+  		margin-right: 10px;
+  	/*background-color: #4CA771;*/
+  		color: #013237;
+}
+
+
+ /* hr {
+ 	 border: none;
+	 border-bottom: dotted 1px;
+ } */
+ 
+ 
+ hr {
+  border: none;
+  border-bottom: 3px dotted #6DBE8B; /* grünliche Farbe, anpassbar */
+  margin: 2rem 0; /* Abstand oben und unten */
+}
+
+
+
+.today {
+  /*margin: 3rem 10px 3rem 10px;*/
+  margin: 0 10px 3rem;
+  text-align: center; 
+  color: #013237;
+  /* background-color: #FFCE9F; */
+  /*background-color: lightblue;*/
+  }
+  
+  .today h2 {
+	text-decoration-line: underline;
+	text-decoration-style: double;
+	display: inline-block;
+  }
+  
+  .today ul {
+/*  background-color: lightgrey;*/
+  display: inline-block; /* zentriert das gesamte ul */
+  text-align: left; 
+  margin: 0;
+  }
+  
+ .today li {
+	left: 0;
+	background-color: pink;
+  }
+
+
+  
+  .motivation {
+  	text-align: center;
+  	margin-top: 48px;
+  	/*background-color: pink;*/
+  	color: #013237;
+  }
+  
+  
+  .tip-section {
+ 	/*background-color: #fff9f3;*/
+ 	background-color: #4FA671;
+ 	color: #013237;
+  padding: 20px;
+  /* margin: 20px; */
+  margin: 40px 20px 20px;
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+/* .daily-quote {
+  font-size: 18px;
+  font-style: italic;
+  margin-bottom: 20px;
+  color: #444;
+} */
+
+ /* background-color: #FFB86B;I*/
+
+.weekly-tip,
+.announcement {
+  background-color: #FFFFFF;
+  /* #fef3f0; */
+  border-left: 4px solid #FFB86B;
+  padding: 10px 15px;
+  margin-bottom: 15px;
+  border-radius: 6px;
+}
+
+.weekly-tip h3,
+.announcement h3 {
+  margin: 0 0 5px 0;
+  font-size: 16px;
+  color: #e6735c;
+}
+
+
+	.read-more-button {
+  display: inline-block;
+  background-color: #FFB86B;
+  /*#ff7f50;*/
+  color: #013237;
+  padding: 8px 14px;
+  border-radius: 5px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+.read-more-button:hover {
+  background-color: #ff6333;
+  }
+  
+  
+  
+  footer {
+	width: 100%;
+	display: block;
+	/*background-color: #5f9834;*/
+	/*background-color: #4b5b3d;*/
+	background-color: #013237;
+	padding: 20px 0;
+	bottom: 0;
+	left: 0;
+	display: flex;
+	justify-content: center; /* Zentriert den Inhalt horizontal */
+	align-items: bottom; /* Zentriert den Inhalt vertikal */
+}
+
+footer p {
+	margin: 0;
+	color: white;
+}
+
+}
+  
+  
+  </style>
+  
+  
+  
 </head>
+
 <body>
+
+
+
+	<div id="preloader">
+	  <div class="spinner"></div>
+	</div>
+
+
+  <!-- Hamburger Icon -->
+  <div class="hamburger" id="hamburger">&#9776;</div>
+
+  <!-- Seitenmenü -->
+  <div id="sideMenu" class="side-menu">
+
+<!-- Pfeil <div class="close-btn" id="closeBtn">&#10145;</div> -->
+
+<!-- Button mit Font Awesome Icon -->
+<div class="close-btn" id="closeBtn"><i class="fa fa-arrow-left"></i></div>
+
+<nav>
+  <a href="index.html">🏠 Startseite</a>
+  <a href="ideen.html">💡 Ideen</a>
+  <a href="veranstaltungen.html">📅 Veranstaltungen</a>
+  <a href="freizeitplaner.html">📋 Freizeitplaner</a>
+  <a href="geheimtipps.html">🔍 GeheimTipps</a>
+  <a href="blog.html">📝 Blog</a>
+</nav>
+  </div>
+  
+
+  <!-- für die Ideen Unterseite nutzen
   <header>
-    <h1>🌻 Deine Freizeit</h1>
-    <p>Weil jeder Tag besonders sein kann.</p>
-  </header>
+	<h1>🌞 Freizeitplaner</h1>
+	<p>Hallo! Was möchtest du heute tun?</p>
+  </header>  <h2>Hallo 👋 Schön, dass du da bist!</h2>
+<p>Plane deine nächste schöne Auszeit oder stöbere durch deine Aktivitäten.
+was möchtdst du heite tun? </p>-->
 
-  <main>
-    <section class="intro">
-      <p>Hallo! Was möchtest du heute tun?</p>
-      <button>🌟 Unternehmungen entdecken</button>
-      <button>📅 Veranstaltungen ansehen</button>
-    </section>
 
-    <section class="today">
-      <h2>📌 Heute geplant:</h2>
-      <ul>
-        <li>15:00 Spaziergang im Park</li>
-        <li>20:00 Spieleabend</li>
-      </ul>
-    </section>
-  </main>
 
-  <footer>
-    <p>© 2025 Deine Freizeit</p>
-  </footer>
+<header>
+	<h1>🌞 Deine Freizeit</h1>
+	<h2 id="Slogan">Weil jeder Tag besonders sein kann.</h2>
+		</header>
+		
+		
+		
+	<p id="Greeting">Hallo! Was möchtest du heute tun?</p>
 
-  <script src="script.js"></script>
+
+
+
+<section class="actions">
+	  <a href="ideen.html" class="btn">💡 Unternehmungen entdecken</a>
+	  <a href="veranstaltungen.html" class="btn">📅 Veranstaltungen ansehen</a>
+	</section>
+	
+	
+<div class="Einführung">
+	<h2>Zeit für dich –<br>Zeit für Erlebnisse</h2>
+	<p>Mit <b>Deine Freizeit</b> entdeckst du neue Ideen, Erlebnisse und Events – ganz in deiner Nähe oder für dein nächstes Abenteuer. Lass dich inspirieren und plane deine Freizeit so, wie sie zu dir passt.</p>
+</div>
+	
+	
+	<hr>
+	
+
+	<section class="today">
+  <h2>📌 Heute geplant:</h2>
+  <ul id="heuteGeplantListe">
+	<!-- Wird per JavaScript gefüllt -->
+  </ul>
+</section>
+	
+<hr>
+
+
+	<section class="motivation">
+		<h2>Spruch des Tages</h2>
+	  <p>✨ <i>„Mach dir Zeit für schöne Momente.“</i></p>
+	</section>
+
+
+
+<section class="tip-section">
+
+  <div class="weekly-tip">
+	<h3>📌 Tipp der Woche</h3>
+	<p>Probiere diese Woche etwas Neues – wie wäre es mit einem Picknick im Park oder einem DIY-Projekt?</p>
+  </div>
+
+  <div class="announcement">
+	<h3>📢 Ankündigung</h3>
+	<p><b>Nächsten Samstag:</b> <br>Flohmarkt im Stadtzentrum! Mehr unter „Veranstaltungen“.</p>
+
+ <p><b>Top 5 kostenlose Aktivitäten in deiner Stadt</b> <br>Ob Picknick im Park, Museumsbesuch am freien Eintrittstag oder Open-Air-Kino – entdecke unsere Tipps für kostenlose Unternehmungen!</p>
+	 <a href="#deinLinkZurBeitragsseite" class="read-more-button">Mehr erfahren</a>
+</div>
+
+	</section>
+	
+	
+
+
+<footer>
+		<!-- Hier kannst du den Footer der Seite einfügen, z. B. Links zu sozialen Medien oder Kontaktinformationen -->
+		<p>&copy; 2025 Deine Freizeit. All rights reserved.</p>
+	</footer>
+
+
+
+	<script>
+	  window.addEventListener('load', function () {
+		const preloader = document.getElementById('preloader');
+		setTimeout(() => {
+		  preloader.style.opacity = '0';
+		  setTimeout(() => {
+			preloader.style.display = 'none';
+		  }, 400);
+		}, 1000); // künstlich verlängert, damit man es sieht
+	  });
+	</script>
+
+
+
+
+  <script>
+	// DOM-Elemente holen
+	const hamburger = document.getElementById('hamburger');
+	const sideMenu = document.getElementById('sideMenu');
+	const closeBtn = document.getElementById('closeBtn');
+
+	// Menü öffnen
+	hamburger.addEventListener('click', () => {
+
+	sideMenu.style.display = 'flex';
+	  // Timeout sorgt dafür, dass der Übergang sichtbar wird
+	  setTimeout(() => {
+		sideMenu.classList.add('open');
+	  }, 10);
+	});
+	  //sideMenu.classList.add('open'); }); //
+
+	
+
+	// Menü schließen
+closeBtn.addEventListener('click', () => {
+	  sideMenu.classList.remove('open');
+
+	
+	setTimeout(() => {
+sideMenu.style.display = 'none';
+	  }, 300); // Warte bis Übergang abgeschlossen ist
+	
+	});
+	
+	</script>
+
+
+<script>
+document.addEventListener('DOMContentLoaded', function () {
+  const heuteGeplantListe = document.getElementById('heuteGeplantListe');
+  const gespeicherteTipps = JSON.parse(localStorage.getItem('merkliste')) || [];
+
+  if (gespeicherteTipps.length === 0) {
+	heuteGeplantListe.innerHTML = '<li>📝 Noch nichts geplant.</li>';
+  } else {
+	gespeicherteTipps.forEach(tipp => {
+	  const li = document.createElement('li');
+	  li.textContent = tipp;
+	  heuteGeplantListe.appendChild(li);
+	});
+  }
+});
+</script>
+	
+
+	
+  
 </body>
 </html>
