@@ -1,0 +1,176 @@
+body {
+		margin: 0;
+		font-family: 'Poppins', sans-serif;
+		/*background-color: #EEEAE7;*/
+		background-color: #EAF9E7;
+		min-height: 100vh;
+		}
+		
+	/* Hamburger Icon oben links */
+	.hamburger {
+	  font-size: 2rem;
+	  padding: 1rem;
+	  color: #4CA771;
+	  cursor: pointer;
+	  position: fixed;
+	  top: 10px;
+	  right: 10px;
+	  z-index: 1001;
+	  user-select: none;
+	}
+
+	/* Seitenmenü - initial versteckt (außerhalb des Bildschirms) */
+	.side-menu {
+	  height: 100%;
+	  width: 250px;
+	  background-color: #ffe4b5;
+	  position: fixed;
+	  top: 0;
+	  /* left: -260px; */
+	  left: 0px;
+	  transform: translateX(-100%);
+	  transition: left 0.3s ease;
+	  z-index: 1000;
+	  padding: 1rem;
+	  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+	  /* display: flex; */
+	  display: none;
+	  flex-direction: column;
+	}
+
+	/* Menü geöffnet: schiebe das Menü ins Bild */
+	.side-menu.open {
+	  /* left: 0; */
+	   display: flex;
+	  transform: translateX(0);
+	}
+
+	/* Schließen-Pfeil oben rechts im Menü */
+	.close-btn {
+	  align-self: flex-end;
+	  font-size: 1.5rem;
+	  cursor: pointer;
+	  user-select: none;
+	  margin-bottom: 1rem;
+	}
+
+	/* Navigationslinks im Menü */
+	.side-menu nav a {
+	  display: block;
+	  margin: 0.8rem 0;
+	  text-decoration: none;
+	  color: #333;
+	  font-size: 1.2rem;
+	  user-select: none;
+	}
+
+	/* Optional: Hover-Effekt auf Links */
+	.side-menu nav a:hover {
+	  color: #b35c00;
+	}
+	
+	
+	header {
+  margin-left: 5px;
+  /*background-color: lightpink;*/
+	display: flex;
+	align-items: center;
+	align-content: center;
+	} 
+	
+	
+	header img {
+  height: 80px;
+  /* margin-right: 0; */
+}
+	
+	
+	header h1 {
+	font-family: 'Playfair Display',
+  serif;
+  color: black;
+  /* background-color: lightgrey;*/
+  font-size: 32px;
+	} 
+	
+	
+	
+	/* #Greeting {
+		margin-left: 10px;
+		margin-right: 5px;
+		margin-top: -5px;
+		font-size: 16px;
+		color: #013237; 
+		} */
+	
+   
+   .filter-row {
+   margin-left: 10px;	
+   gap: 5px;
+  display: flex;
+  align-items: center;
+  align-content: start;
+  /*background-color: lightgrey;*/
+}
+
+	.filter-row #Greeting {
+		margin-right: 10px;
+		margin: 0;
+  padding: 0;
+		align-self: center;
+		}
+
+
+
+.filter select {
+  /*padding: 0.4rem;
+  font-size: 1rem;
+  border: 1px solid #ccc; 
+  border-radius: 5px;
+  background-color: #FFB86B;
+  color: #013237;*/
+  padding: 6px 10px;
+	  font-size: 14px;
+	  border-radius: 6px;
+	  border: 1px solid #4CA771;
+	  background-color: white;
+	  color: #013237;
+	  cursor: pointer;
+	}
+
+
+
+	
+	main {
+		margin: 0 10px 20px;
+		}
+	
+	.map h2 {
+		margin-top: 60px;
+		color: #013237;
+	}
+	
+
+
+
+
+footer {
+	 position: relative;
+	width: 100%;
+	/*background-color: #5f9834;*/
+	/*background-color: #4b5b3d;*/
+	background-color: #013237;
+	padding: 20px 0;
+	/* left: 0; */ 
+	margin-bottom: 0;
+	display: flex;
+	justify-content: center; /* Zentriert den Inhalt horizontal */
+	align-items: center; /* Zentriert den Inhalt vertikal */
+}
+
+footer p {
+	margin: 0;
+	color: white;
+}
+
+}
