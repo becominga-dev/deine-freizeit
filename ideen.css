@@ -1,10 +1,13 @@
+/* ===== Allgemein ===== */
 body {
-		margin: 0;
-		font-family: 'Poppins', sans-serif;
-		/*background-color: #EEEAE7;*/
-		background-color: #EAF9E7;
-		min-height: 100vh;
-		}
+  margin: 0;
+  font-family: 'Poppins', sans-serif;
+  background-color: #EAF9E7;
+  /* min-height: 100vh; */
+  color: #013237;
+  overflow-x: hidden; /* ⬅️ verhindert horizontales Scrollen */
+}
+
 		
 	/* Hamburger Icon oben links */
 	.hamburger {
@@ -18,7 +21,8 @@ body {
 	  z-index: 1001;
 	  user-select: none;
 	}
-
+	
+	
 	/* Seitenmenü - initial versteckt (außerhalb des Bildschirms) */
 	.side-menu {
 	  height: 100%;
@@ -70,107 +74,139 @@ body {
 	}
 	
 	
-	header {
-  margin-left: 5px;
-  /*background-color: lightpink;*/
-	display: flex;
-	align-items: center;
-	align-content: center;
-	} 
-	
-	
-	header img {
-  height: 80px;
-  /* margin-right: 0; */
-}
-	
-	
-	header h1 {
-	font-family: 'Playfair Display',
-  serif;
+
+
+/* ===== Überschrift ===== */
+h1 {
+  font-family: 'Playfair Display', serif;
   color: black;
-  /* background-color: lightgrey;*/
-  font-size: 32px;
-	} 
-	
-	
-	
-	/* #Greeting {
-		margin-left: 10px;
-		margin-right: 5px;
-		margin-top: -5px;
-		font-size: 16px;
-		color: #013237; 
-		} */
-	
-   
-   .filter-row {
-   margin-left: 10px;	
-   gap: 5px;
-  display: flex;
-  align-items: center;
-  align-content: start;
   /*background-color: lightgrey;*/
+  font-size: 2rem;
+  margin: 25px 15px;
+  text-align: center;
 }
 
-	.filter-row #Greeting {
-		margin-right: 10px;
-		margin: 0;
-  padding: 0;
-		align-self: center;
-		}
+/* ===== Wetter Modul ===== */
+#wetterModul {
+  text-align: center;
+  margin: 0 auto;
+  max-width: 400px;
+}
+
+#wetterModul h2 {
+	font-size: 1.5rem;
+}
 
 
+/* ===== Filter-Bereiche ===== */
+.filter-dropdown2 {
+  margin: 10px;
+  display: inline-block;
+  position: relative;
+}
 
-.filter select {
-  /*padding: 0.4rem;
-  font-size: 1rem;
-  border: 1px solid #ccc; 
-  border-radius: 5px;
-  background-color: #FFB86B;
-  color: #013237;*/
-  padding: 6px 10px;
-	  font-size: 14px;
-	  border-radius: 6px;
-	  border: 1px solid #4CA771;
-	  background-color: white;
-	  color: #013237;
-	  cursor: pointer;
-	}
+.dropdown-toggle {
+  padding: 8px 14px;
+  font-size: 14px;
+  border-radius: 6px;
+  border: 1px solid #4CA771;
+  background-color: white;
+  color: #013237;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
 
+.dropdown-toggle:hover {
+  background-color: #dff0dc;
+}
 
+.dropdown-menu {
+  display: none;
+  position: absolute;
+  top: 110%;
+  left: 0;
 
-	
-	main {
-		margin: 0 10px 20px;
-		}
-	
-	.map h2 {
-		margin-top: 60px;
-		color: #013237;
-	}
-	
+  background-color: #fff;
+  border: 1px solid #4CA771;
+  border-radius: 6px;
+  padding: 10px;
 
+  min-width: 180px;
+  max-width: 90vw;		  /* ⬅️ NIE breiter als Bildschirm */
+  z-index: 10;
 
+  box-shadow: 0 4px 6px rgba(0,0,0,0.15);
+}
 
+.dropdown-menu label {
+  display: block;
+  font-size: 14px;
+  margin-bottom: 6px;
+  color: #013237;
+  cursor: pointer;
+}
 
+/* ===== Filtern Button ===== */
+.filter-submit2 {
+  margin: 20px 15px;
+}
+
+.filter-submit2 button {
+  padding: 10px 16px;
+  background-color: #4CA771;
+  border: none;
+  border-radius: 6px;
+  font-size: 15px;
+  color: white;
+  cursor: pointer;
+  font-weight: 500;
+  transition: background-color 0.3s ease;
+}
+
+.filter-submit2 button:hover {
+  background-color: #3a855a;
+}
+
+/* ===== Ergebnisse ===== */
+.results {
+  margin: 30px 15px;
+  padding: 15px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  border-radius: 8px;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.1);
+}
+
+.results h2 {
+  margin-top: 0;
+  margin-bottom: 15px;
+  color: #013237;
+  font-size: 1.4rem;
+}
+
+/* ===== Karten (Suggestions) ===== */
+.suggestion-card {
+  margin-bottom: 12px;
+  padding: 12px;
+  border-radius: 6px;
+  border: 1px solid #eee;
+  background-color: #f9f9f9;
+}
+
+/* ===== Footer ===== */
 footer {
-	 position: relative;
-	width: 100%;
-	/*background-color: #5f9834;*/
-	/*background-color: #4b5b3d;*/
-	background-color: #013237;
-	padding: 20px 0;
-	/* left: 0; */ 
-	margin-bottom: 0;
-	display: flex;
-	justify-content: center; /* Zentriert den Inhalt horizontal */
-	align-items: center; /* Zentriert den Inhalt vertikal */
+  width: 100%;
+  background-color: #013237;
+  padding: 20px 0;
+  margin-top: 40px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 footer p {
-	margin: 0;
-	color: white;
-}
-
+  margin: 0;
+  color: white;
+  font-size: 14px;
 }
