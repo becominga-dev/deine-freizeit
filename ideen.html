@@ -4,26 +4,28 @@
 -->
 
 
-
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title> Ideen - Deine Freizeit</title>
+  <meta charset="UTF-8">
+  <title>Personalisierte Freizeitvorschläge</title>
 
-	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <!-- Dein CSS -->
+  <link rel="stylesheet" href="style.css">
+
+  <!-- Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<!--  <style>
+	/* Nur für Demo / Lernen */
+	#wetterModul p {
+	  margin: 4px 0;
+	}
+  </style> -->
   
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway&display=swap" rel="stylesheet">
-
-	 <link rel="stylesheet" href="ideen.css">
-
-	
+  
 </head>
-
-
 <body>
-
 
   <!-- Hamburger Icon -->
   <div class="hamburger" id="hamburger">&#9776;</div>
@@ -36,110 +38,171 @@
 <!-- Button mit Font Awesome Icon -->
 <div class="close-btn" id="closeBtn"><i class="fa fa-arrow-left"></i></div>
 
-	<nav>
- <a href="index.html">🏠 Startseite</a>
-  <a href="ideen.html">💡 Ideen</a>
+<nav>
+  <a href="home.html">🏠 Startseite</a>
+  <a href="ideen.html">💡 Freizeitideen</a>
   <a href="veranstaltungen.html">📅 Veranstaltungen</a>
   <a href="freizeitplaner.html">📋 Freizeitplaner</a>
   <a href="geheimtipps.html">🔍 GeheimTipps</a>
   <a href="blog.html">📝 Blog</a>
-	</nav>
+</nav>
   </div>
   
 
-  <!-- für die Ideen Unterseite nutzen
-  <header>
-	<h1>🌞 Freizeitplaner</h1>
-	<p>Hallo! Was möchtest du heute tun?</p>
-  </header>  <h2>Hallo 👋 Schön, dass du da bist!</h2>
-<p>Plane deine nächste schöne Auszeit oder stöbere durch deine Aktivitäten.
-was möchtdst du heite tun? </p>-->
 
-	
+<h1>✨ Personalisierte Freizeitvorschläge</h1>
 
-
-
-<header>
-
-<img src="https://i.postimg.cc/mZChx0vF/Icon-ideen.png" alt="Sonnen-Icon" style="margin-right: 3px;">
-
-
-	<h1>Freizeitideen</h1>
-	
-</header> 
-	
-	
-	
+<!-- ========================= -->
+<!-- WETTER MODUL -->
+<!-- ========================= -->
 <div id="wetterModul" style="background:#e0f7fa; padding:20px; margin-bottom:20px; border-radius:10px; max-width:400px;">
-  <h2>🌤️ Wetter an deinem Standort</h2>
-  <p id="wetterText">Wird geladen…</p>
+  <h2>Wetter an deinem Standort</h2>
+
+  <!-- 🔧 GEÄNDERT:
+	   p → div, damit wir mehrere Zeilen mit HTML ausgeben können -->
+  <div id="wetterText">Wird geladen…</div>
+
   <div id="wetterIcon" style="font-size:48px; margin-top:10px;"></div>
-  <p id="stadtName" style="font-weight:bold; margin-top:10px;"></p>
+
+<!-- </strong> -->
+
+  <p id="stadtName" style="margin-top:10px;"></p>
 </div>
 
-		
-	
-		<div class="filter-row">
-		
-  <p id="Greeting">Filter</p>
+<!-- ========================= -->
+<!-- FILTER FORMULAR -->
+<!-- ========================= -->
+<form id="filter-form">
 
-  <section class="filter">
-	<select style="color: #013237;">
-	  <option>Alle Kategorien</option>
-	  <option>Outdoor</option>
-	  <option>Indoor</option>
-	  <option>Kostenfrei</option>
-	</select>
-  </section>
+<!-- ORT -->
+  <div class="filter-dropdown2">
+	<button type="button" class="dropdown-toggle">Ort auswählen</button>
+	<div class="dropdown-menu">
+	  <label><input type="checkbox" value="wasser"> Am Wasser</label>
+	  <label><input type="checkbox" value="natur"> In der Natur</label>
+	  <label><input type="checkbox" value="indoor-outdoor"> Indoor/Outdoor</label>
+	  <label><input type="checkbox" value="barrierefrei"> Barrierefrei</label>
+	</div>
+  </div>
+
+<!-- ZIELGRUPPE-->
+  <div class="filter-dropdown2">
+	<button type="button" class="dropdown-toggle">Zielgruppe</button>
+	<div class="dropdown-menu">
+	  <label><input type="checkbox" value="kind">Kinder</label>
+	  <label><input type="checkbox" value="jugendlich">Jugendliche</label>
+	  <label><input type="checkbox" value="erwachsen">Erwachsene</label>
+	 <label><input type="checkbox" value="senior">Senioren</label>
+	  <label><input type="checkbox" value="familie">Familien</label>
+	 <label><input type="checkbox" value="paar">Paare</label>
+	<label><input type="checkbox" value="gruppe">Gruppem</label>
+	 <label><input type="checkbox" value="allein">Alleine</label>
+	</div>
+  </div>
+
+<!-- BUDGET -->
+  <div class="filter-dropdown2">
+	<button type="button" class="dropdown-toggle">Budget auswählen</button>
+	<div class="dropdown-menu">
+	  <label><input type="checkbox" value="kostenlos"> Kostenlos</label>
+	  <label><input type="checkbox" value="guenstig"> Günstig</label>
+	  <label><input type="checkbox" value="mittel"> Mittelmäßig</label>
+	  <label><input type="checkbox" value="teuer"> Teuer</label>
+	</div>
+  </div>
+
+<!-- Wetter -->
+  <div class="filter-dropdown2">
+	<button type="button" class="dropdown-toggle">Wetter auswählen</button>
+	<div class="dropdown-menu">
+	  <label><input type="checkbox" value="regen"> Regenwetter</label>
+	  <label><input type="checkbox" value="gut"> Gutes Wetter</label>
+	  <label><input type="checkbox" value="warm"> Warm</label>
+	</div>
+  </div>
+ 
+ 
+ <!-- erste vier Ende-->
+
+<!-- THEMEN -->
+
+  <div class="filter-dropdown2">
+	<button type="button" class="dropdown-toggle">Themen auswählen</button>
+	<div class="dropdown-menu">
+	  <label><input type="checkbox" value="kunst"> Kunst</label>
+	  <label><input type="checkbox" value="geschichte"> Geschichte</label>
+	  <label><input type="checkbox" value="musik"> Musik</label>
+	  <label><input type="checkbox" value="technik"> Technik</label>
+	  <label><input type="checkbox" value="sport"> Sport</label>
+	  <label><input type="checkbox" value="essenTrinken"> Essen & Trinken</label>
+	  <label><input type="checkbox" value="film"> Film</label>
+	</div>
+  </div>
+  
+  <!-- Barrierefreiheit -->
+
+  <div class="filter-dropdown2">
+	<button type="button" class="dropdown-toggle">Barrierefreiheit</button>
+	<div class="dropdown-menu">
+	  <label><input type="checkbox" value="rollstuhl">Rollstuhlgerecht</label>
+	  <label><input type="checkbox" value="gebärde">Gebärdensprachen</label>
+	  <label><input type="checkbox" value="visuelles">visuelle Hilfen</label>
+	  <label><input type="checkbox" value="umgebung">ruhige Umgebung</label>
+	</div>
+  </div>
+  
+<!--  ZEIT UND DAUER -->
+
+  <div class="filter-dropdown2">
+	<button type="button" class="dropdown-toggle">Zeit & Dauer</button>
+	<div class="dropdown-menu">
+	  <label><input type="checkbox" value="kunst"> Kunst</label><br>
+	  <label><input type="checkbox" value="geschichte"> Geschichte</label><br>
+	  <label><input type="checkbox" value="musik"> Musik</label><br>
+	  <label><input type="checkbox" value="technik"> Technik</label><br>
+	  <label><input type="checkbox" value="sport"> Sport</label><br>
+	  <label><input type="checkbox" value="essenTrinken"> Essen & Trinken</label><br>
+	  <label><input type="checkbox" value="film"> Film</label>
+	</div>
+  </div>
+
+<!-- ERREICHBARKEIT -->
+
+  <div class="filter-dropdown2">
+	<button type="button" class="dropdown-toggle">Erreichbarkeit</button>
+	<div class="dropdown-menu">
+	  <label><input type="checkbox" value="rollstuhl">Rollstuhlgerecht</label>
+	  <label><input type="checkbox" value="gebärde">Gebärdensprachen</label>
+	  <label><input type="checkbox" value="visuelles">visuelle Hilfen</label>
+	  <label><input type="checkbox" value="umgebung">ruhige Umgebung</label>
+	</div>
+  </div>
+  
+  
+
+  <div class="filter-submit2">
+	<button type="submit">Filtern</button>
+  </div>
+
+</form>
+
+<!-- ========================= -->
+<!-- ERGEBNISSE -->
+<!-- ========================= -->
+<div class="results" id="results">
+  <h2>Deine Vorschläge:</h2>
+  <div id="suggestions-list">
+	<p>⚡ Noch keine Auswahl – bitte Filter setzen.</p>
+  </div>
 </div>
-		
 
 
+<!-- ========================= -->
+<!-- JAVASCRIPT -->
+<!-- ========================= -->
 
 
-  <main>
-
-
-	<section class="map">
-	  <h2>Interaktive Karte</h2>
-	  <!-- Scribble Maps oder Leaflet einbetten -->
-
-
-
-<iframe src="https://umap.openstreetmap.de/de/map/freizeitideen-koln_99194?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true" width="100%" height="500px" style="border:0;"></iframe>
-	</section> 
-	
-	
-	<!--
-<iframe width="100%" height="300px" frameborder="0" allowfullscreen allow="geolocation" src="//umap.openstreetmap.de/de/map/freizeitideen-koln_99180?scaleControl=false&miniMap=false&scrollWheelZoom=false&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true"></iframe><p><a href="//umap.openstreetmap.de/de/map/freizeitideen-koln_99180?scaleControl=false&miniMap=false&scrollWheelZoom=true&zoomControl=true&editMode=disabled&moreControl=true&searchControl=null&tilelayersControl=null&embedControl=null&datalayersControl=true&onLoadPanel=none&captionBar=false&captionMenus=true">Vollbildanzeige</a></p>
--->
-
-
-	<section class="results">
-	  <h2>🎯 Ideen</h2>
-	  <div class="idea-card">
-		<h3>🎨 Kreativ-Workshop</h3>
-		<p>📍 Stadtmitte | Kosten: 10€</p>
-		<button>Mehr erfahren</button>
-	  </div>
-	  <div class="idea-card">
-		<h3>🚴 Fahrradtour</h3>
-		<p>📍 Am See | Kostenlos</p>
-		<button>Mehr erfahren</button>
-	  </div>
-	</section>
-  </main>
-
-  
-  
-  <footer>
-<p>&copy; 2025 Deine Freizeit. All rights reserved.</p>
-</footer>
-
-<script>
-document.addEventListener('DOMContentLoaded', function() {
-  // your code here
-
+  <script>
 	// DOM-Elemente holen
 	const hamburger = document.getElementById('hamburger');
 	const sideMenu = document.getElementById('sideMenu');
@@ -170,71 +233,205 @@ sideMenu.style.display = 'none';
 	});
 	
 	</script>
-
-
 	
-
+	
 <script>
+
+/* =========================
+   DROPDOWN LOGIK
+========================= */
+document.querySelectorAll('.dropdown-toggle').forEach(button => {
+  button.addEventListener('click', () => {
+	const menu = button.nextElementSibling;
+	menu.style.display = (menu.style.display === 'block') ? 'none' : 'block';
+  });
+});
+
+document.addEventListener('click', (e) => {
+  document.querySelectorAll('.filter-dropdown2').forEach(dropdown => {
+	if (!dropdown.contains(e.target)) {
+	  const menu = dropdown.querySelector('.dropdown-menu');
+	  if (menu) menu.style.display = 'none';
+	}
+  });
+});
+
+/* =========================
+   WETTER LADEN
+========================= */
 async function ladeWetter() {
+
   if (!navigator.geolocation) {
-	document.getElementById("wetterText").innerText = "Standortzugriff nicht verfügbar.";
+	document.getElementById("wetterText").innerText =
+	  "Standortzugriff nicht verfügbar.";
 	return;
   }
 
   navigator.geolocation.getCurrentPosition(async pos => {
+
 	const lat = pos.coords.latitude;
 	const lon = pos.coords.longitude;
 
-	// Reverse Geocoding - Stadtnamen holen via OpenStreetMap Nominatim
+	/* ===== Ort bestimmen ===== */
 	try {
-	  const resGeo = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`);
+	  const resGeo = await fetch(
+		`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`
+	  );
 	  const dataGeo = await resGeo.json();
-	  const stadt = dataGeo.address.city || dataGeo.address.town || dataGeo.address.village || dataGeo.address.county || "deinem Standort";
+
+	  const stadt =
+		dataGeo.address.city ||
+		dataGeo.address.town ||
+		dataGeo.address.village ||
+		"deinem Standort";
+
 	  document.getElementById("stadtName").innerText = `Ort: ${stadt}`;
+
 	} catch {
 	  document.getElementById("stadtName").innerText = "Ort: Unbekannt";
 	}
 
-	// Wetterdaten von Open-Meteo abrufen
-	const url = `https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`;
-
+	/* ===== Wetterdaten ===== */
 	try {
-	  const res = await fetch(url);
+	  const res = await fetch(
+		`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current_weather=true`
+	  );
 	  const data = await res.json();
 	  const weather = data.current_weather;
+
 	  const temp = weather.temperature;
 	  const wind = weather.windspeed;
 	  const code = weather.weathercode;
 
-	  let msg = `Temperatur: ${temp} °C, Wind: ${wind} km/h`;
-	  let icon = "☀️"; // Standard-Icon
+	  /* Wetter-Beschreibung */
+	  let condition = "Unbekannt";
+	  let icon = "❓";
 
-	  // Wettercode nach Open-Meteo-Definition (vereinfacht)
-	  // https://open-meteo.com/en/docs#weathercode
-	  if ([0].includes(code)) icon = "☀️";		   // Klarer Himmel
-	  else if ([1, 2, 3].includes(code)) icon = "⛅"; // Teilweise bewölkt
-	  else if ([45, 48].includes(code)) icon = "🌫️";  // Nebel
-	  else if ([51, 53, 55].includes(code)) icon = "🌦️"; // Nieselregen
-	  else if ([61, 63, 65].includes(code)) icon = "🌧️"; // Regen
-	  else if ([71, 73, 75, 85, 86].includes(code)) icon = "🌨️"; // Schnee
-	  else if ([95, 96, 99].includes(code)) icon = "⛈️"; // Gewitter
-	  else icon = "❓";
+	  if (code === 0) {
+		condition = "Klar";
+		icon = "☀️";
+	  } else if ([1,2,3].includes(code)) {
+		condition = "Bewölkt";
+		icon = "⛅";
+	  } else if ([61,63,65].includes(code)) {
+		condition = "Regen";
+		icon = "🌧️";
+	  } else if ([71,73,75].includes(code)) {
+		condition = "Schnee";
+		icon = "🌨️";
+	  } else if ([95,96,99].includes(code)) {
+		condition = "Gewitter";
+		icon = "⛈️";
+	  }
 
-	  document.getElementById("wetterText").innerText = msg;
+	  /* 🔧 WICHTIG:
+		 innerHTML → mehrere Zeilen untereinander */
+	  document.getElementById("wetterText").innerHTML = `
+		<p><strong>Temperatur:</strong> ${temp} °C</p>
+		<p>Wind: ${wind} km/h</p>
+		<p>Wetter: ${condition}</p>
+	  `;
+
 	  document.getElementById("wetterIcon").innerText = icon;
+
 	} catch (err) {
-	  console.error(err);
-	  document.getElementById("wetterText").innerText = "Wetter konnte nicht geladen werden.";
-	  document.getElementById("wetterIcon").innerText = "";
+	  document.getElementById("wetterText").innerText =
+		"Wetter konnte nicht geladen werden.";
 	}
+
   }, () => {
-	document.getElementById("wetterText").innerText = "Standortfreigabe verweigert.";
+	document.getElementById("wetterText").innerText =
+	  "Standortfreigabe verweigert.";
   });
 }
 
 ladeWetter();
-</script>
 
+/* =========================
+   BEISPIEL AKTIVITÄTEN
+========================= */
+const activities = [
+  {
+	id: 1,
+	title: "Spaziergang im Stadtpark",
+	description: "Genieße Natur mitten in der Stadt.",
+	location: "natur",
+	budget: "kostenlos",
+	themes: ["natur", "bewegung"],
+	weather: ["gut","warm"]
+  },
+  {
+	id: 2,
+	title: "Besuch im Technikmuseum",
+	description: "Interaktive Ausstellungen und Demos.",
+	location: "indoor-outdoor",
+	budget: "teuer",
+	themes: ["technik","kultur"],
+	weather: ["regen","gut","warm"]
+  },
+  {
+	id: 3,
+	title: "Open-Air-Kino am Fluss",
+	description: "Filmabend unter freiem Himmel.",
+	location: "wasser",
+	budget: "guenstig",
+	themes: ["film","essenTrinken"],
+	weather: ["gut","warm"]
+  }
+];
+
+/* =========================
+   FILTER LOGIK
+========================= */
+function getCheckedValues() {
+  return Array.from(
+	document.querySelectorAll('input[type="checkbox"]:checked')
+  ).map(cb => cb.value);
+}
+
+function loadRecommendations() {
+  const selected = getCheckedValues();
+
+  const results = activities.filter(act =>
+	selected.length === 0 ||
+	selected.includes(act.location) ||
+	selected.includes(act.budget) ||
+	act.themes.some(t => selected.includes(t)) ||
+	act.weather.some(w => selected.includes(w))
+  );
+
+  renderSuggestions(results);
+}
+
+function renderSuggestions(items) {
+  const container = document.getElementById('suggestions-list');
+  container.innerHTML = '';
+
+  if (items.length === 0) {
+	container.innerHTML =
+	  '<p>Keine Vorschläge zu deinen Filtern gefunden.</p>';
+	return;
+  }
+
+  items.forEach(item => {
+	const card = document.createElement('div');
+	card.className = 'suggestion-card';
+	card.innerHTML = `
+	  <h3>${item.title}</h3>
+	  <p>${item.description}</p>
+	  <p><strong>Themen:</strong> ${item.themes.join(', ')}</p>
+	`;
+	container.appendChild(card);
+  });
+}
+
+document.getElementById('filter-form')
+  .addEventListener('submit', e => {
+	e.preventDefault();
+	loadRecommendations();
+  });
+
+</script>
 
 </body>
 </html>
