@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Filmempfehlung</title>
+	
+	<style>
+	<link rel="stylesheet" href="watch.css"
+	</style>
+</head>
+<body>
+
+
+<section class="filmempfehlung">
+  <h2>Individuelle Filmempfehlung</h2>
+
+  <form id="film-filter">
+	<label for="genre">Genre:</label>
+	<select id="genre" name="genre">
+	  <option value="">Beliebig</option>
+	  <option>Action</option>
+	  <option>Komödie</option>
+	  <option>Drama</option>
+	  <option>Romantik</option>
+	  <option>Thriller</option>
+	  <option>Fantasy</option>
+	</select>
+
+	<label>Typ / Art:</label>
+	<div>
+	  <label><input type="radio" name="typ" value="Film"> Film</label>
+	  <label><input type="radio" name="typ" value="Serie"> Serie</label>
+	  <label><input type="radio" name="typ" value="Doku"> Doku</label>
+	</div>
+
+	<label for="jahr">Produktionsjahr (ab):</label>
+	<input type="number" id="jahr" name="jahr" min="1900" max="2025">
+
+	<label for="stimmung">Stimmung:</label>
+	<select id="stimmung" name="stimmung">
+	  <option value="">Beliebig</option>
+	  <option>Zum Lachen</option>
+	  <option>Spannend</option>
+	  <option>Romantisch</option>
+	  <option>Nachdenklich</option>
+	  <option>Abenteuerlich</option>
+	</select>
+
+	<label for="laufzeit">Laufzeit:</label>
+	<select id="laufzeit" name="laufzeit">
+	  <option value="">Beliebig</option>
+	  <option>Kurz</option>
+	  <option>Mittel</option>
+	  <option>Lang</option>
+	</select>
+
+	<button type="submit">Empfehlung anzeigen</button>
+  </form>
+
+  <div id="empfehlungsergebnis"></div>
+</section>
+
+
+
+
+
+<script>
+const filme = [
+  {
+	titel: "La La Land",
+	genre: "Romantik",
+	typ: "Film",
+	jahr: 2016,
+	stimmung: "Romantisch",
+	laufzeit: "Lang",
+	beschreibung: "Ein Jazzmusiker und eine Schauspielerin versuchen, Karriere und Liebe zu vereinen.",
+	bild: "https://image.tmdb.org/t/p/w500/uDO8zWDhfWwoFdKS4fzkUJt0Rf0.jpg"
+  },
+  {
+	titel: "Brooklyn Nine-Nine",
+	genre: "Komödie",
+	typ: "Serie",
+	jahr: 2013,
+	stimmung: "Zum Lachen",
+	laufzeit: "Lang",
+	beschreibung: "Eine chaotische, aber liebenswerte Polizeieinheit sorgt für Lacher und Teamgeist.",
+	bild: "https://image.tmdb.org/t/p/w500/g4rWbbyH5HTbDkR1DJRbfYvMxzC.jpg"
+  },
+  {
+	titel: "Breaking Bad",
+	genre: "Drama",
+	typ: "Serie",
+	jahr: 2008,
+	stimmung: "Spannend",
+	laufzeit: "Lang",
+	beschreibung: "Ein Chemielehrer wird zum Drogenbaron – mit tragischen Folgen.",
+	bild: "https://image.tmdb.org/t/p/w500/eSzpy96DwBujGFj0xMbXBcGcfxX.jpg"
+  },
+  {
+	titel: "Planet Erde II",
+	genre: "Doku",
+	typ: "Doku",
+	jahr: 2016,
+	stimmung: "Nachdenklich",
+	laufzeit: "Lang",
+	beschreibung: "Atemberaubende Naturaufnahmen zeigen die Vielfalt unseres Planeten.",
+	bild: "https://image.tmdb.org/t/p/w500/vBFSgLUNqZ6wffyqM0VLOZrI4Ds.jpg"
+  },
+  {
+	titel: "Zombieland",
+	genre: "Action",
+	typ: "Film",
+	jahr: 2009,
+	stimmung: "Zum Lachen",
+	laufzeit: "Mittel",
+	beschreibung: "Vier Überlebende schlagen sich mit Humor durch eine Zombie-Apokalypse.",
+	bild: "https://image.tmdb.org/t/p/w500/dUkAmAyPVqubSBNRjRqCgHggZcK.jpg"
+  }
+];
+
+document.getElementById("film-filter").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const genre = document.getElementById("genre").value;
+  const typ = document.querySelector("input[name='typ']:checked")?.value;
+  const jahr = parseInt(document.getElementById("jahr").value);
+  const stimmung = document.getElementById("stimmung").value;
+  const laufzeit = document.getElementById("laufzeit").value;
+
+  const ergebnisse = filme.filter(f => {
+	return (
+	  (!genre || f.genre === genre) &&
+	  (!typ || f.typ === typ) &&
+	  (!jahr || f.jahr >= jahr) &&
+	  (!stimmung || f.stimmung === stimmung) &&
+	  (!laufzeit || f.laufzeit === laufzeit)
+	);
+  });
+
+  const container = document.getElementById("empfehlungsergebnis");
+  container.innerHTML = "";
+
+  if (ergebnisse.length === 0) {
+	container.innerHTML = "<p>Keine passenden Empfehlungen gefunden 😢</p>";
+	return;
+  }
+
+  ergebnisse.forEach(f => {
+	const filmEl = document.createElement("div");
+	filmEl.classList.add("filmkarte");
+	filmEl.innerHTML = `
+	  <img src="${f.bild}" alt="${f.titel}">
+	  <h3>${f.titel}</h3>
+	  <p><strong>Genre:</strong> ${f.genre}</p>
+	  <p><strong>Typ:</strong> ${f.typ}</p>
+	  <p>${f.beschreibung}</p>
+	`;
+	container.appendChild(filmEl);
+  });
+});
+</script>
+
+
+</body>
+</html>
