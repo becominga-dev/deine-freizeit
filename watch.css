@@ -1,0 +1,117 @@
+.filmempfehlung {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 1.5rem;
+  background-color: #fff9f3; /* sanftes Beige wie bei anderen Boxen */
+  border-radius: 12px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  color: #013237;
+  font-family: 'Poppins', sans-serif;
+}
+
+.filmempfehlung h2 {
+  text-align: center;
+  color: #013237;
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 1.5rem;
+  font-size: 26px;
+}
+
+/* Formular-Stil */
+#film-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  background-color: #EAF9E7; /* leichter Grünton, wie der Seitenhintergrund */
+  padding: 1.2rem;
+  border-radius: 10px;
+}
+
+#film-filter label {
+  font-weight: bold;
+  color: #013237;
+}
+
+#film-filter select,
+#film-filter input[type="number"] {
+  padding: 0.6rem;
+  border-radius: 8px;
+  border: 1px solid #6DBE8B;
+  font-size: 1rem;
+  background-color: #fff;
+  color: #013237;
+}
+
+#film-filter input[type="radio"] {
+  accent-color: #4CA771;
+}
+
+#film-filter button {
+  margin-top: 1rem;
+  background-color: #FFB86B;
+  color: #013237;
+  border: none;
+  border-radius: 8px;
+  padding: 0.75rem;
+  font-weight: bold;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s;
+}
+
+#film-filter button:hover {
+  background-color: #ff9f47;
+}
+
+/* Ergebnisbereich */
+#empfehlungsergebnis {
+  margin-top: 2rem;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1.5rem;
+}
+
+/* Filmkarten */
+.filmkarte {
+  background-color: #FFFFFF;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.25s, box-shadow 0.25s;
+}
+
+.filmkarte:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.filmkarte img {
+  width: 100%;
+  height: 350px;
+  object-fit: cover;
+  border-bottom: 3px solid #FFB86B;
+}
+
+.filmkarte h3 {
+  margin: 0.75rem;
+  color: #013237;
+  font-size: 18px;
+}
+
+.filmkarte p {
+  margin: 0.5rem 0.75rem;
+  font-size: 15px;
+  color: #013237;
+}
+
+.filmkarte strong {
+  color: #4CA771;
+}
+
+/* Lade- oder Fehlermeldungen */
+#empfehlungsergebnis p {
+  text-align: center;
+  font-style: italic;
+  color: #013237;
+  font-size: 16px;
+}
