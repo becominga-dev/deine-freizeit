@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title> Startseite </title>
+
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway&display=swap" rel="stylesheet">
+
+  <style>
+  
+  
+	body {
+		margin: 0;
+		font-family: 'Poppins', sans-serif;
+		background-color: #EAF9E7;
+		min-height: 100vh;
+		}
+		
+	/* Hamburger Icon oben links */
+	.hamburger {
+	  font-size: 2rem;
+	  padding: 1rem;
+	  cursor: pointer;
+	  position: fixed;
+	  top: 10px;
+	  right: 10px;
+	  z-index: 1001;
+	  user-select: none;
+	  color: #4CA771;
+	}
+
+
+	/* Seitenmenü - initial versteckt (außerhalb des Bildschirms) */
+	.side-menu {
+	  height: 100%;
+	  width: 250px;
+	  background-color: #ffe4b5;
+	  position: fixed;
+	  top: 0;
+	  /* left: -260px; */
+	  left: 0px;
+	  transform: translateX(-100%);
+	  transition: left 0.3s ease;
+	  z-index: 1000;
+	  padding: 1rem;
+	  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+	  /* display: flex; */
+	  display: none;
+	  flex-direction: column;
+	}
+
+	/* Menü geöffnet: schiebe das Menü ins Bild */
+	.side-menu.open {
+	  /* left: 0; */
+	   display: flex;
+	  transform: translateX(0);
+	}
+
+	/* Schließen-Pfeil oben rechts im Menü */
+	.close-btn {
+	  align-self: flex-end;
+	  font-size: 1.5rem;
+	  cursor: pointer;
+	  user-select: none;
+	  margin-bottom: 1rem;
+	}
+
+	/* Navigationslinks im Menü */
+	.side-menu nav a {
+	  display: block;
+	  margin: 0.8rem 0;
+	  text-decoration: none;
+	  color: #333;
+	  font-size: 1.2rem;
+	  user-select: none;
+	}
+
+	/* Optional: Hover-Effekt auf Links */
+	.side-menu nav a:hover {
+	  color: #b35c00;
+	}
+	
+	
+	header {
+  margin-left: 5px;
+ /* background-color: lightpink;*/
+	display: flex;
+	align-items: center;
+	align-content: center;
+	} 
+	
+	
+	header img {
+  height: 80px;
+  /* margin-right: 0; */
+}
+	
+	
+	header h1 {
+	font-family: 'Playfair Display',
+  serif;
+  color: black;
+  /* background-color: lightgrey;*/
+  font-size: 32px;
+	} 
+	
+	
+
+	h2 {
+		text-align: center;
+		margin-top: 60px;
+	  font-size: 1.6rem;
+	  margin-bottom: 0.3rem;
+	  color: #013237;
+	  /*font-weight: bold; */
+	}
+
+	
+	/* header h2 {
+	  font-size: 1.1rem;
+	  font-weight: normal;
+	} 
+*/
+
+	.interactive {
+		position: relative;
+		margin-top: 40px;
+		margin-bottom: auto;
+		  display: flex;
+	  flex-direction: column;
+	  align-items: center;
+	  padding-bottom: 20px;
+	/* background-color: lightgrey;*/
+	}
+
+
+
+
+	.calendar {
+	  background-color: #C0E6BA;
+	  border-radius: 12px;
+	  padding: 20px;
+	  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+	  width: 330px;
+	  margin-bottom: 10px;
+	}
+
+	.calendar-header {
+	  display: flex;
+	  justify-content: space-between;
+	  align-items: center;
+	  color: #013237;
+	  font-weight: bold;
+	  font-size: 20px;
+	  margin-bottom: 15px;
+	}
+
+	.arrow {
+	  cursor: pointer;
+	  font-size: 24px;
+	  padding: 5px;
+	}
+
+	.calendar-days, .calendar-dates {
+	  display: grid;
+	  grid-template-columns: repeat(7, 1fr);
+	  text-align: center;
+	  gap: 6px;
+	}
+
+	.calendar-days div {
+	  font-weight: bold;
+	  color: #013237;
+	}
+
+	.calendar-dates div {
+	  background-color: #4CA771;
+	  padding: 10px;
+	  border-radius: 8px;
+	  color: white;
+	  cursor: pointer;
+	  transition: background-color 0.2s;
+	}
+
+	.calendar-dates div:hover {
+	  background-color: #FFB86B;
+	  color: #013237;
+	}
+
+	.inactive {
+	  background-color: transparent !important;
+	  color: #A5B5A2 !important;
+	  cursor: default !important;
+	}
+
+	.event-box {
+	  margin-top: 20px;
+	  background-color: #fff;
+	  border-left: 4px solid #4CA771;
+	  padding: 12px;
+	  border-radius: 8px;
+	  color: #013237;
+	  width: 330px;
+	  display: none;
+	}
+
+	.event-box h3 {
+	  margin-top: 0;
+	}
+
+	#filterContainer {
+	  margin-bottom: 15px;
+	  width: 330px;
+	  display: flex;
+	  justify-content: flex-end;
+	}
+
+	#filterSelect {
+	  padding: 6px 10px;
+	  font-size: 14px;
+	  border-radius: 6px;
+	  border: 1px solid #4CA771;
+	  background-color: white;
+	  color: #013237;
+	  cursor: pointer;
+	}
+
+	/* Popup */
+	#reminderPopup {
+	  position: fixed;
+	  top: 50%;
+	  left: 50%;
+	  transform: translate(-50%, -50%);
+	  background-color: white;
+	  padding: 20px;
+	  border-radius: 10px;
+	  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+	  display: none;
+	  z-index: 9999;
+	}
+	#reminderPopup input {
+	  width: 100%;
+	  padding: 8px;
+	  margin-top: 10px;
+	  margin-bottom: 10px;
+	  border: 1px solid #ccc;
+	  border-radius: 5px;
+	}
+	#reminderPopup button {
+	  margin-right: 10px;
+	  padding: 6px 10px;
+	  border: none;
+	  border-radius: 5px;
+	  cursor: pointer;
+	}
+	#reminderPopup button.send {
+	  background-color: #4CA771;
+	  color: white;
+	}
+	#reminderPopup button.cancel {
+	  background-color: #ccc;
+	  color: black;
+	}
+	
+	
+	 footer {
+	 position: relative;
+	width: 100%;
+	/*background-color: #5f9834;*/
+	/*background-color: #4b5b3d;*/
+	background-color: #013237;
+	padding: 20px 0;
+	/* left: 0; */ 
+	margin-bottom: 0;
+	display: flex;
+	justify-content: center; /* Zentriert den Inhalt horizontal */
+	align-items: center; /* Zentriert den Inhalt vertikal */
+}
+
+footer p {
+	margin: 0;
+	color: white;
+}
+
+}
+	
+	
+  </style>
+  
+  
+  
+</head>
+
+<body>
+  <!-- Hamburger Icon -->
+  <div class="hamburger" id="hamburger">&#9776;</div>
+
+  <!-- Seitenmenü -->
+  <div id="sideMenu" class="side-menu">
+
+<!-- Pfeil <div class="close-btn" id="closeBtn">&#10145;</div> -->
+
+<!-- Button mit Font Awesome Icon -->
+<div class="close-btn" id="closeBtn"><i class="fa fa-arrow-left"></i></div>
+
+	<nav>
+	  <a href="index.html">🏠 Startseite</a>
+	  <a href="ideen.html">💡 Freizeitideen</a>
+	  <a href="veranstaltungen.html">📅 Veranstaltungen</a>
+	  <a href="#">📋 Freizeitplaner</a>
+	<a href="geheimtipps.html">GeheimTipps</a>
+	  <a href="blog.html">Blog</a>
+
+
+	</nav>
+  </div>
+ 
+
+
+<header>
+
+<img src="https://i.postimg.cc/nLKZXD8G/Icon-veranstaltungen.png" alt="Sonnen-Icon" style="margin-right: 3px;">
+
+<h1>Veranstaltungen</h1> 
+
+	
+</header>
+	
+	
+ <h2>Events &<br>Veranstaltungen</h2>
+
+
+<section class="interactive">
+
+  <div id="filterContainer">
+	<label for="filterSelect" style="margin-right:8px; font-weight:bold; color:#013237;">Filter:</label>
+	<select id="filterSelect">
+	  <option value="all">Alle Events</option>
+	  <option value="free">Kostenlos</option>
+	  <option value="low">Günstig</option>
+	  <option value="medium">Mittleres Budget</option>
+	  <option value="high">Teuer</option>
+	</select>
+  </div>
+
+  <div class="calendar">
+	<div class="calendar-header">
+	  <span class="arrow" onclick="changeMonth(-1)">&#8592;</span>
+	  <span id="monthYear"></span>
+	  <span class="arrow" onclick="changeMonth(1)">&#8594;</span>
+	</div>
+
+	<div class="calendar-days">
+	  <div>Mo</div><div>Di</div><div>Mi</div><div>Do</div><div>Fr</div><div>Sa</div><div>So</div>
+	</div>
+	<div class="calendar-dates" id="calendarDates"></div>
+  </div>
+
+  <div class="event-box" id="eventBox">
+	<h3>Veranstaltungen am <span id="selectedDate"></span></h3>
+	<ul id="eventList"></ul>
+  </div>
+
+  <!-- Erinnerungspopup -->
+  <div id="reminderPopup">
+	<h4>Erinnerung einrichten</h4>
+	<p id="popupEventInfo"></p>
+	<input type="email" id="emailInput" placeholder="Deine E-Mail-Adresse" />
+	<br>
+	<button class="send" onclick="sendReminder()">Erinnern</button>
+	<button class="cancel" onclick="closePopup()">Abbrechen</button>
+  </div>
+  
+ </section>
+  
+  
+  
+
+<footer>
+<p>&copy; 2025 Deine Freizeit. All rights reserved.</p>
+</footer>
+
+
+
+
+  <script>
+	// DOM-Elemente holen
+	const hamburger = document.getElementById('hamburger');
+	const sideMenu = document.getElementById('sideMenu');
+	const closeBtn = document.getElementById('closeBtn');
+
+	// Menü öffnen
+	hamburger.addEventListener('click', () => {
+
+	sideMenu.style.display = 'flex';
+	  // Timeout sorgt dafür, dass der Übergang sichtbar wird
+	  setTimeout(() => {
+		sideMenu.classList.add('open');
+	  }, 10);
+	});
+	  //sideMenu.classList.add('open'); }); //
+
+	
+
+	// Menü schließen
+closeBtn.addEventListener('click', () => {
+	  sideMenu.classList.remove('open');
+
+	
+	setTimeout(() => {
+sideMenu.style.display = 'none';
+	  }, 300); // Warte bis Übergang abgeschlossen ist
+	
+	});
+	
+	
+	
+
+	
+  </script>
+  
+  
+
+<script>
+  const monthYearEl = document.getElementById("monthYear");
+	const calendarDates = document.getElementById("calendarDates");
+	const eventBox = document.getElementById("eventBox");
+	const selectedDateEl = document.getElementById("selectedDate");
+	const eventList = document.getElementById("eventList");
+	const filterSelect = document.getElementById("filterSelect");
+
+	let currentMonth = new Date().getMonth();
+	let currentYear = new Date().getFullYear();
+	let currentFilter = "all";
+
+	// Events direkt im Code:
+	const events = {
+	  "2025-07-05": [
+		{ title: "🎉 Stadtfest", priceCategory: "free" },
+		{ title: "🎭 Theateraufführung", priceCategory: "medium" }
+	  ],
+	  "2025-07-10": [
+		{ title: "🎬 Open-Air-Kino", priceCategory: "low" }
+	  ],
+	  "2025-07-15": [
+		{ title: "🎶 Klassikkonzert", priceCategory: "high" }
+	  ]
+	};
+
+	function renderCalendar(month, year) {
+	  const firstDay = new Date(year, month).getDay();
+	  const daysInMonth = new Date(year, month + 1, 0).getDate();
+	  const weekdaysOffset = firstDay === 0 ? 6 : firstDay - 1;
+
+	  calendarDates.innerHTML = "";
+	  monthYearEl.textContent = new Date(year, month).toLocaleDateString("de-DE", {
+		month: "long", year: "numeric"
+	  });
+
+	  for (let i = 0; i < weekdaysOffset; i++) {
+		const emptyDiv = document.createElement("div");
+		emptyDiv.classList.add("inactive");
+		calendarDates.appendChild(emptyDiv);
+	  }
+
+	  for (let d = 1; d <= daysInMonth; d++) {
+		const dateDiv = document.createElement("div");
+		dateDiv.textContent = d;
+		const dateStr = `${year}-${String(month + 1).padStart(2, "0")}-${String(d).padStart(2, "0")}`;
+
+		const eventsForDay = events[dateStr];
+		const hasEventsFiltered = eventsForDay && eventsForDay.some(ev => currentFilter === "all" || ev.priceCategory === currentFilter);
+
+		if (hasEventsFiltered) {
+		  dateDiv.style.backgroundColor = "#FFB86B";
+		  dateDiv.style.color = "#013237";
+		} else {
+		  dateDiv.style.backgroundColor = "#4CA771";
+		  dateDiv.style.color = "white";
+		}
+
+		dateDiv.addEventListener("click", () => showEvents(dateStr));
+		calendarDates.appendChild(dateDiv);
+	  }
+	}
+
+	function changeMonth(offset) {
+	  currentMonth += offset;
+	  if (currentMonth < 0) {
+		currentMonth = 11;
+		currentYear--;
+	  } else if (currentMonth > 11) {
+		currentMonth = 0;
+		currentYear++;
+	  }
+	  eventBox.style.display = "none";
+	  renderCalendar(currentMonth, currentYear);
+	}
+
+	function showEvents(dateStr) {
+	  selectedDateEl.textContent = new Date(dateStr).toLocaleDateString("de-DE");
+	  const items = events[dateStr];
+	  eventList.innerHTML = "";
+
+	  if (items && items.length) {
+		const filteredItems = items.filter(ev => currentFilter === "all" || ev.priceCategory === currentFilter);
+
+		if (filteredItems.length > 0) {
+		  filteredItems.forEach(event => {
+			const li = document.createElement("li");
+			li.innerHTML = `
+			  <strong>${event.title}</strong> (${event.priceCategory})
+			  <br/>
+			  <button onclick="showReminderPopup('${event.title}', '${dateStr}')" style="
+				margin-top: 5px;
+				background-color: #FFB86B;
+				color: #013237;
+				border: none;
+				padding: 5px 10px;
+				border-radius: 5px;
+				cursor: pointer;
+			  ">Erinnere mich</button>
+			`;
+			eventList.appendChild(li);
+		  });
+		} else {
+		  const li = document.createElement("li");
+		  li.textContent = "Keine Veranstaltungen für diesen Filter";
+		  eventList.appendChild(li);
+		}
+	  } else {
+		const li = document.createElement("li");
+		li.textContent = "Keine Veranstaltungen";
+		eventList.appendChild(li);
+	  }
+
+	  eventBox.style.display = "block";
+	}
+
+	filterSelect.addEventListener("change", () => {
+	  currentFilter = filterSelect.value;
+	  eventBox.style.display = "none";
+	  renderCalendar(currentMonth, currentYear);
+	});
+
+	// Reminder-Funktion
+	let selectedEventTitle = "";
+	let selectedEventDate = "";
+
+	function showReminderPopup(title, dateStr) {
+	  selectedEventTitle = title;
+	  selectedEventDate = dateStr;
+	  document.getElementById("popupEventInfo").innerText = `"${title}" am ${new Date(dateStr).toLocaleDateString("de-DE")}`;
+	  document.getElementById("reminderPopup").style.display = "block";
+	}
+
+	function closePopup() {
+	  document.getElementById("reminderPopup").style.display = "none";
+	  document.getElementById("emailInput").value = "";
+	}
+
+	function sendReminder() {
+	  const email = document.getElementById("emailInput").value;
+	  if (!email || !email.includes("@")) {
+		alert("Bitte eine gültige E-Mail-Adresse eingeben.");
+		return;
+	  }
+
+	  // Hier kann man die Daten z. B. per fetch() an ein Backend senden
+	  alert(`Erinnerung wird gesendet an ${email} für "${selectedEventTitle}" am ${new Date(selectedEventDate).toLocaleDateString("de-DE")}`);
+	  closePopup();
+	}
+
+	renderCalendar(currentMonth, currentYear);
+</script>
+
+
+</body>
+</html>
