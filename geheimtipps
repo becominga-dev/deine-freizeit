@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <title>🌿 Geheimtipps & Lokale Favoriten</title>
+  <style>
+	body {
+	  font-family: Arial, sans-serif;
+	  padding: 20px;
+	}
+	.filter-container {
+	  margin-bottom: 20px;
+	}
+	select {
+	  padding: 8px;
+	  margin-right: 10px;
+	}
+	.card {
+	  border: 1px solid #ccc;
+	  padding: 15px;
+	  border-radius: 8px;
+	  margin: 10px 0;
+	  background-color: #f9f9f9;
+	}
+	.card h3 {
+	  margin-top: 10px;
+	}
+	.card small {
+	  color: #777;
+	}
+	.card img {
+	  width: 100%;
+	  border-radius: 5px;
+	  max-height: 200px;
+	  object-fit: cover;
+	}
+	.like-button {
+	  background: none;
+	  border: none;
+	  cursor: pointer;
+	  font-size: 20px;
+	  padding: 5px;
+	  color: #c00;
+	}
+  </style>
+</head>
+<body>
+
+  <h1>🌿 Geheimtipps & Lokale Favoriten</h1>
+  <p>Finde besondere Orte abseits der Massen – empfohlen von echten Freizeitfans!</p>
+
+  <div class="filter-container">
+	<label>Region:</label>
+	<select id="regionFilter">
+	  <option value="alle">Alle Regionen</option>
+	  <option value="berlin">Berlin</option>
+	  <option value="hamburg">Hamburg</option>
+	  <option value="köln">Köln</option>
+	  <option value="münchen">München</option>
+	</select>
+
+	<label>Kategorie:</label>
+	<select id="kategorieFilter">
+	  <option value="alle">Alle Kategorien</option>
+	  <option value="natur">Natur</option>
+	  <option value="essen">Essen & Trinken</option>
+	  <option value="kultur">Kultur</option>
+	  <option value="ausflug">Ausflug</option>
+	</select>
+  </div>
+
+  <div id="tippsContainer"></div>
+
+  <script>
+	const geheimtipps = [
+	  {
+		id: 1,
+		titel: "Hofcafé Lindenblüte",
+		ort: "Berlin",
+		kategorie: "essen",
+		beschreibung: "Ein verstecktes Café mit selbstgemachten Kuchen und Streuobstwiese – perfekt für den Sonntagnachmittag.",
+		bild: "bilder/hofcafe.jpg"
+	  },
+	  {
+		id: 2,
+		titel: "Geheimer See im Plänterwald",
+		ort: "Berlin",
+		kategorie: "natur",
+		beschreibung: "Wenige kennen diesen ruhigen Ort im Wald – ideal zum Entspannen.",
+		bild: "bilder/see.jpg"
+	  },
+	  {
+		id: 3,
+		titel: "Kunst im Untergrund",
+		ort: "Hamburg",
+		kategorie: "kultur",
+		beschreibung: "Streetart-Tour durch alte U-Bahn-Stationen mit spannender Geschichte.",
+		bild: "bilder/streetart.jpg"
+	  },
+	  {
+		id: 4,
+		titel: "Bergpark bei Nacht",
+		ort: "Köln",
+		kategorie: "ausflug",
+		beschreibung: "Ein abendlicher Spaziergang mit Lichterspiel und Aussicht auf die Stadt.",
+		bild: "bilder/bergpark.jpg"
+	  },
+	  {
+		id: 5,
+		titel: "Hinterhof-Flohmarkt",
+		ort: "München",
+		kategorie: "kultur",
+		beschreibung: "Einmal im Monat öffnet ein Künstlerviertel seine Hinterhöfe für Schatzsucher.",
+		bild: "bilder/flohmarkt.jpg"
+	  }
+	];
+
+	function anzeigenGefilterteTipps(region, kategorie) {
+	  const container = document.getElementById("tippsContainer");
+	  container.innerHTML = "";
+
+	  const gefiltert = geheimtipps.filter(tipp => {
+		const regionMatch = region === "alle" || tipp.ort.toLowerCase() === region;
+		const kategorieMatch = kategorie === "alle" || tipp.kategorie === kategorie;
+		return regionMatch && kategorieMatch;
+	  });
+
+	  if (gefiltert.length === 0) {
+		container.innerHTML = "<p>Keine Geheimtipps für deine Auswahl gefunden.</p>";
+		return;
+	  }
+
+	  gefiltert.forEach(tipp => {
+		const card = document.createElement("div");
+		card.className = "card";
+		card.innerHTML = `
+		  <img src="${tipp.bild}" alt="${tipp.titel}">
+		  <h3>${tipp.titel}</h3>
+		  <small>${tipp.ort} • ${tipp.kategorie}</small>
+		  <p>${tipp.beschreibung}</p>
+		  <button class="like-button" onclick="zurMerkliste(${tipp.id})">❤️ Merken</button>
+		`;
+		container.appendChild(card);
+	  });
+	}
+
+	function zurMerkliste(tippId) {
+	  const bestehende = JSON.parse(localStorage.getItem("merkliste")) || [];
+	  const tipp = geheimtipps.find(t => t.id === tippId);
+	  if (tipp && !bestehende.some(e => e.id === tipp.id)) {
+		bestehende.push(tipp);
+		localStorage.setItem("merkliste", JSON.stringify(bestehende));
+		alert(`„${tipp.titel}“ wurde deiner Merkliste hinzugefügt!`);
+	  } else {
+		alert("Dieser Tipp ist bereits in deiner Merkliste.");
+	  }
+	}
+
+	// Event-Listener für Filter
+	document.getElementById("regionFilter").addEventListener("change", () => {
+	  const region = document.getElementById("regionFilter").value;
+	  const kategorie = document.getElementById("kategorieFilter").value;
+	  anzeigenGefilterteTipps(region, kategorie);
+	});
+
+	document.getElementById("kategorieFilter").addEventListener("change", () => {
+	  const region = document.getElementById("regionFilter").value;
+	  const kategorie = document.getElementById("kategorieFilter").value;
+	  anzeigenGefilterteTipps(region, kategorie);
+	});
+
+	// Standardansicht
+	anzeigenGefilterteTipps("alle", "alle");
+  </script>
+
+</body>
+</html>
