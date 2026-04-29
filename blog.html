@@ -1,1 +1,233 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Blog | Deine Freizeit</title>
 
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Raleway&display=swap" rel="stylesheet">
+
+  <style>
+	body {
+	  margin: 0;
+	  font-family: 'Poppins', sans-serif;
+	  background-color: #EAF9E7;
+	  color: #013237;
+	}
+
+
+
+	.hamburger {
+	  font-size: 2rem;
+	  padding: 1rem;
+	  color: #4CA771;
+	  cursor: pointer;
+	  position: fixed;
+	  top: 10px;
+	  right: 10px;
+	  z-index: 1001;
+	}
+
+	.side-menu {
+	  height: 100%;
+	  width: 250px;
+	  background-color: #ffe4b5;
+	  position: fixed;
+	  top: 0;
+	  left: 0;
+	  transform: translateX(-100%);
+	  transition: left 0.3s ease;
+	  z-index: 1000;
+	  padding: 1rem;
+	  display: none;
+	  flex-direction: column;
+	}
+
+	.side-menu.open {
+	  display: flex;
+	  transform: translateX(0);
+	}
+
+	.close-btn {
+	  align-self: flex-end;
+	  font-size: 1.5rem;
+	  cursor: pointer;
+	  margin-bottom: 1rem;
+	}
+
+	.side-menu nav a {
+	  display: block;
+	  margin: 0.8rem 0;
+	  text-decoration: none;
+	  color: #333;
+	  font-size: 1.2rem;
+	}
+
+	.side-menu nav a:hover {
+	  color: #b35c00;
+	}
+
+	header h1 {
+	  font-family: 'Playfair Display', serif;
+	  color: black;
+	  font-size: 32px;
+	  margin-left: 5px;
+	}
+
+	#Slogan {
+	  margin-left: 10px;
+	  font-size: 22px;
+	  font-family: 'Raleway', sans-serif;
+	  color: black;
+	}
+
+	.blog-container {
+	  max-width: 1200px;
+	  margin: 2rem auto;
+	  padding: 0 1rem;
+	}
+
+	.blog-container h2 {
+	  text-align: center;
+	  font-size: 28px;
+	  margin-bottom: 2rem;
+	  color: #013237;
+	}
+
+	.blog-grid {
+	  display: grid;
+	  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+	  gap: 1.5rem;
+	}
+
+	.blog-card {
+	  background-color: #fff;
+	  border-radius: 10px;
+	  box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+	  overflow: hidden;
+	  text-decoration: none;
+	  transition: transform 0.2s ease;
+	  color: inherit;
+	}
+
+	.blog-card:hover {
+	  transform: translateY(-5px);
+	}
+
+	.blog-card img {
+	  width: 100%;
+	  height: 180px;
+	  object-fit: cover;
+	}
+
+	.blog-card-content {
+	  padding: 1rem;
+	}
+
+	.blog-card-title {
+	  font-size: 1.2rem;
+	  margin: 0 0 0.5rem;
+	  color: #013237;
+	}
+
+	.blog-card-snippet {
+	  font-size: 0.95rem;
+	  color: #444;
+	}
+
+	footer {
+	  background-color: #013237;
+	  padding: 20px;
+	  text-align: center;
+	  color: white;
+	  margin-top: 3rem;
+	}
+
+	@media (max-width: 600px) {
+	  .blog-card img {
+		height: 150px;
+	  }
+	}
+  </style>
+</head>
+
+<body>
+
+
+  <div class="hamburger" id="hamburger">&#9776;</div>
+
+  <div id="sideMenu" class="side-menu">
+	<div class="close-btn" id="closeBtn"><i class="fa fa-arrow-left"></i></div>
+	<nav>
+	  <a href="index.html">🏠 Startseite</a>
+	  <a href="ideen.html">💡 Ideen</a>
+	  <a href="veranstaltungen.html">📅 Veranstaltungen</a>
+	  <a href="blog.html">📝 Blog</a>
+	</nav>
+  </div>
+
+  <header>
+	<h1>🌞 Deine Freizeit</h1>
+	<h2 id="Slogan">Inspirationen & Tipps für deinen Alltag</h2>
+  </header>
+
+  <main class="blog-container">
+	<h2>📝 Blog – Inspiration für deine Freizeit</h2>
+
+	<section class="blog-grid">
+
+	  <a href="date-ideen-herbst.html" class="blog-card">
+		<img src="images/date-herbst.jpg" alt="Date Ideen im Herbst">
+		<div class="blog-card-content">
+		  <h3 class="blog-card-title">🍁 6 Date-Ideen für den Herbst</h3>
+		  <p class="blog-card-snippet">Goldene Blätter & romantische Ideen: Lass dich von diesen kreativen Dates inspirieren.</p>
+		</div>
+	  </a>
+
+	  <a href="rezepte-birnenkuchen.html" class="blog-card">
+		<img src="images/birnenkuchen.jpg" alt="Birnenkuchen Rezept">
+		<div class="blog-card-content">
+		  <h3 class="blog-card-title">🍐 Schneller Birnenkuchen</h3>
+		  <p class="blog-card-snippet">Ideal für gemütliche Nachmittage – einfach & lecker backen mit Saisonfrüchten.</p>
+		</div>
+	  </a>
+
+	  <a href="filmserien-tipps.html" class="blog-card">
+		<img src="images/filmtipps.jpg" alt="Filme und Serien Tipps">
+		<div class="blog-card-content">
+		  <h3 class="blog-card-title">🎬 Must-See Filme & Serien</h3>
+		  <p class="blog-card-snippet">Langeweile? Nicht mit diesen Empfehlungen für deinen nächsten Couch-Abend!</p>
+		</div>
+	  </a>
+
+	</section>
+  </main>
+
+  <footer>
+	<p>&copy; 2025 Deine Freizeit. All rights reserved.</p>
+  </footer>
+
+  <script>
+	
+	const hamburger = document.getElementById('hamburger');
+	const sideMenu = document.getElementById('sideMenu');
+	const closeBtn = document.getElementById('closeBtn');
+
+	hamburger.addEventListener('click', () => {
+	  sideMenu.style.display = 'flex';
+	  setTimeout(() => {
+		sideMenu.classList.add('open');
+	  }, 10);
+	});
+
+	closeBtn.addEventListener('click', () => {
+	  sideMenu.classList.remove('open');
+	  setTimeout(() => {
+		sideMenu.style.display = 'none';
+	  }, 300);
+	});
+  </script>
+
+</body>
+</html>
