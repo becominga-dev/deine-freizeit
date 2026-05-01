@@ -1,4 +1,68 @@
-.filmempfehlung {
+
+	/* Hamburger Icon oben links */
+	.hamburger {
+	  font-size: 2rem;
+	  padding: 1rem;
+	  color: #4CA771;
+	  cursor: pointer;
+	  position: fixed;
+	  top: 10px;
+	  right: 10px;
+	  z-index: 1001;
+	  user-select: none;
+	}
+
+	/* Seitenmenü - initial versteckt (außerhalb des Bildschirms) */
+	.side-menu {
+	  height: 100%;
+	  width: 250px;
+	  background-color: #ffe4b5;
+	  position: fixed;
+	  top: 0;
+	  /* left: -260px; */
+	  left: 0px;
+	  transform: translateX(-100%);
+	  transition: left 0.3s ease;
+	  z-index: 1000;
+	  padding: 1rem;
+	  box-shadow: 2px 0 5px rgba(0,0,0,0.2);
+	  /* display: flex; */
+	  display: none;
+	  flex-direction: column;
+	}
+
+	/* Menü geöffnet: schiebe das Menü ins Bild */
+	.side-menu.open {
+	  /* left: 0; */
+	   display: flex;
+	  transform: translateX(0);
+	}
+
+	/* Schließen-Pfeil oben rechts im Menü */
+	.close-btn {
+	  align-self: flex-end;
+	  font-size: 1.5rem;
+	  cursor: pointer;
+	  user-select: none;
+	  margin-bottom: 1rem;
+	}
+
+	/* Navigationslinks im Menü */
+	.side-menu nav a {
+	  display: block;
+	  margin: 0.8rem 0;
+	  text-decoration: none;
+	  color: #333;
+	  font-size: 1.2rem;
+	  user-select: none;
+	}
+
+	/* Optional: Hover-Effekt auf Links */
+	.side-menu nav a:hover {
+	  color: #b35c00;
+	}
+
+filmempfehlung {
   max-width: 800px;
   margin: 3rem auto;
   padding: 1.5rem;
