@@ -1,5 +1,13 @@
+body {
+		margin: 0;
+		font-family: 'Poppins', sans-serif;
+		/*background-color: #EEEAE7;*/
+		background-color: #EAF9E7;
+		min-height: 100vh;
+		}
+	
 
-	/* Hamburger Icon oben links */
+/* Hamburger Icon oben links */
 	.hamburger {
 	  font-size: 2rem;
 	  padding: 1rem;
