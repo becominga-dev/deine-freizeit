@@ -179,3 +179,18 @@ filmempfehlung {
   color: #013237;
   font-size: 16px;
 }
+
+
+footer {
+	  background-color: #013237;
+	  padding: 20px;
+	  text-align: center;
+	  color: white;
+	  margin-top: 3rem;
+	}
+
+	@media (max-width: 600px) {
+	  .blog-card img {
+		height: 150px;
+	  }
+	}
