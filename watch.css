@@ -62,6 +62,15 @@
 	  color: #b35c00;
 	}
 
+header h1 {
+	  font-family: 'Playfair Display', serif;
+	  color: black;
+	  font-size: 32px;
+	  margin-left: 5px;
+	}
+
+
+
 filmempfehlung {
   max-width: 800px;
   margin: 3rem auto;
